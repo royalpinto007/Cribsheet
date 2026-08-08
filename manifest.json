@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Cribsheet: Decode Selected Text",
+  "version": "1.0.0",
+  "description": "Select a timestamp, cron line, token or hash and see what it means, right in the page. Nothing is sent anywhere, ever.",
+  "permissions": ["activeTab", "contextMenus", "scripting"],
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "background": {
+    "service_worker": "dist/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Cribsheet",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "commands": {
+    "decode-selection": {
+      "suggested_key": {
+        "default": "Alt+Shift+D"
+      },
+      "description": "Decode the selected text"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
