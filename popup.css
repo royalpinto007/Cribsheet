@@ -1,0 +1,215 @@
+/* Cribsheet
+ *
+ * A reference card, so it is set like one: a monospace column of values against
+ * a quiet ground, with one warm accent doing the work a highlighter pen does on
+ * a real crib sheet. Paper-ish rather than app-ish, because the thing it is
+ * imitating is a note you wrote to yourself.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  --paper: #faf9f6;
+  --raised: #ffffff;
+  --ink: #16151c;
+  --ink-soft: #5b5670;
+  --ink-faint: #8b85a6;
+  --rule: #e6e3ee;
+  --accent: #8a6a12;
+  --accent-soft: #fbf2d9;
+  --danger: #b23a2b;
+
+  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #141219;
+    --raised: #1c1a24;
+    --ink: #ece9f4;
+    --ink-soft: #a49fb8;
+    --ink-faint: #837da0;
+    --rule: #2a2634;
+    --accent: #f0c86a;
+    --accent-soft: #262032;
+    --danger: #f08a7c;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 400px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 660;
+  letter-spacing: -0.01em;
+}
+
+.brand img {
+  border-radius: 5px;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+kbd {
+  font: inherit;
+  font-size: 10.5px;
+  background: var(--raised);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0 3px;
+}
+
+.tryit {
+  padding: 10px 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tryit label {
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: inherit;
+  background: var(--raised);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 8px 9px;
+}
+
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.out {
+  padding: 2px 12px 4px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.reading {
+  padding: 9px 0;
+}
+
+.reading + .reading {
+  border-top: 1px solid var(--rule);
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-weight: 640;
+  margin-bottom: 4px;
+}
+
+/* Confidence as a word. "possible" is something a person can act on; 0.45 is
+   a number pretending to be a measurement. */
+.hedge {
+  flex-shrink: 0;
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  padding: 2px 0;
+  align-items: baseline;
+}
+
+.label {
+  flex-shrink: 0;
+  width: 6.8em;
+  color: var(--ink-faint);
+  font-size: 11.5px;
+}
+
+.value {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  word-break: break-word;
+}
+
+.value.warn {
+  color: var(--danger);
+}
+
+.swatch {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1px solid rgb(0 0 0 / 25%);
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+.note {
+  margin: 6px 0 0;
+  padding: 7px 9px;
+  border-radius: 7px;
+  background: var(--accent-soft);
+  color: var(--ink-soft);
+  font-size: 11.5px;
+}
+
+.empty {
+  margin: 0;
+  padding: 14px 0;
+  color: var(--ink-soft);
+}
+
+.foot {
+  padding: 10px 12px 14px;
+  border-top: 1px solid var(--rule);
+}
+
+.foot p {
+  margin: 0;
+  font-size: 11px;
+  color: var(--ink-faint);
+}

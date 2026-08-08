@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cribsheet</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="bar">
+      <div class="brand">
+        <img src="icons/icon-32.png" alt="" width="20" height="20" />
+        <span>Cribsheet</span>
+      </div>
+      <span class="hint"
+        >Select text on any page, then <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></span
+      >
+    </header>
+
+    <div class="tryit">
+      <label for="input">Or paste something here</label>
+      <textarea id="input" rows="2" spellcheck="false" placeholder="1700000000"></textarea>
+    </div>
+
+    <main id="out" class="out" aria-live="polite"></main>
+
+    <footer class="foot">
+      <p>
+        Cribsheet reads everything on your machine. It has no server, asks for no website access,
+        and stores nothing at all, including what you type here.
+      </p>
+    </footer>
+    <script type="module" src="dist/popup.js"></script>
+  </body>
+</html>
