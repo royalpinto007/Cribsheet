@@ -1,0 +1,43 @@
+name: Bug report
+description: Report a problem.
+title: '[Bug]: '
+labels: ['bug']
+body:
+  - type: textarea
+    id: input
+    attributes:
+      label: The text you selected
+      description: Paste it exactly. If it is a real token or key, replace the secret parts but keep the shape.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What went wrong
+      options:
+        - It was not recognised and should have been
+        - It was read as something it is not
+        - The decoded value is wrong
+        - The reading was ranked below a worse one
+        - The sheet did not appear, or appeared in the wrong place
+        - The page's styling leaked into the sheet
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      description: Only needed if the problem is where the sheet appeared or how it looked.
+  - type: input
+    id: chrome
+    attributes:
+      label: Chrome version
+      placeholder: 'chrome://version'

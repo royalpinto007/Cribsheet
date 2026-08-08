@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Typecheck, test, build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run format:check
+      - run: npm run build
+      - run: npm audit --audit-level=high
+
+      # The product claim is that a token you decode here has not been shown to
+      # anyone. A dependency bump or a stray import could quietly break that,
+      # and nothing else would notice.
+      - name: No network calls in the shipped bundles
+        run: |
+          if grep -rnE "fetch\(|XMLHttpRequest|new WebSocket|sendBeacon|EventSource|navigator\.connection" dist/; then
+            echo "::error::Cribsheet must make no network requests, but the bundles contain one."
+            exit 1
+          fi
+          echo "no network calls found"
+
+      # Decoded values come from arbitrary page text, so all of it is
+      # attacker-controlled. It is rendered with textContent and createTextNode,
+      # and innerHTML must not creep back in.
+      - name: No innerHTML in the source
+        run: |
+          if grep -rnE "innerHTML|outerHTML|insertAdjacentHTML" --include="*.ts" src/ ./*.ts; then
+            echo "::error::Use textContent. Selected page text is untrusted input."
+            exit 1
+          fi
+          echo "no innerHTML found"
+
+      # Four claims from the listing, each one checkable. The storage check is
+      # the important one: "stores nothing" is not a policy here, it is the
+      # absence of the permission that would make storing possible.
+      - name: The permission list stays as small as it claims
+        run: |
+          node --input-type=module -e "
+          import fs from 'node:fs';
+          const m = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+          const problems = [];
+          if (m.host_permissions?.length) problems.push('host_permissions must stay empty');
+          if (m.optional_host_permissions?.length) problems.push('no optional host permissions either');
+          if (m.content_scripts?.length) problems.push('content_scripts would run without being asked');
+          const allowed = ['activeTab', 'contextMenus', 'scripting'];
+          const extra = (m.permissions || []).filter((p) => !allowed.includes(p));
+          if (extra.length) problems.push('unexpected permissions: ' + extra.join(', '));
+          if (problems.length) { console.error(problems.join('\n')); process.exit(1); }
+          console.log('permissions: ' + (m.permissions || []).join(', '));
+          "
+
+      - name: Manifest references files that exist
+        run: |
+          node --input-type=module -e "
+          import fs from 'node:fs';
+          const m = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+          const refs = [
+            ...Object.values(m.icons || {}),
+            ...Object.values(m.action?.default_icon || {}),
+            m.background?.service_worker,
+            m.action?.default_popup,
+          ].filter(Boolean);
+          const missing = refs.filter((r) => !fs.existsSync(r));
+          if (missing.length) { console.error('missing: ' + missing.join(', ')); process.exit(1); }
+          console.log(\`manifest ok, \${refs.length} referenced files present\`);
+          "

@@ -1,0 +1,28 @@
+name: Feature request
+description: Suggest a format for Cribsheet to read.
+title: '[Feature]: '
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: format
+    attributes:
+      label: What format
+      description: With two or three real examples.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Where you currently go to decode it
+      description: |
+        If the answer is a website, say which one. That is the strongest case
+        for adding it, because the point of this extension is not having to.
+    validations:
+      required: true
+  - type: textarea
+    id: ambiguity
+    attributes:
+      label: What else looks like it
+      description: |
+        Every detector has to avoid claiming things that merely resemble its
+        format. If you know what the near misses are, say so.
