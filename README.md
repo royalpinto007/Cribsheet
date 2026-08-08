@@ -12,6 +12,54 @@ opened belongs to somebody else.
 [![Tech](https://img.shields.io/badge/Tech-TypeScript-8a6a12.svg)](#how-it-works)
 
 <!-- media:start -->
+
+<p align="center">
+  <img src="docs/media/logo.png" width="96" alt="Cribsheet logo">
+</p>
+
+<h3 align="center">Stop pasting your tokens into strangers’ websites.</h3>
+
+<p align="center">
+  <a href="docs/media/demo.mp4">
+    <img src="docs/media/demo-thumbnail.webp" width="640" alt="Watch the Cribsheet demo">
+  </a>
+  <br>
+  <a href="docs/media/demo.mp4"><b>Watch the 30 second demo</b></a>
+</p>
+
+## Screenshots
+
+![Select it. Read it. Move on.](docs/media/1-in-page.webp)
+
+<sub>Select it. Read it. Move on.</sub>
+
+<details>
+<summary><b>See 3 more</b></summary>
+
+### Jwt
+
+![That token never left your machine.](docs/media/2-jwt.webp)
+
+<sub>That token never left your machine.</sub>
+
+### Readings
+
+![Every honest reading, best first.](docs/media/3-readings.webp)
+
+<sub>Every honest reading, best first.</sub>
+
+### Values
+
+![And the rest of the day job.](docs/media/4-values.webp)
+
+<sub>And the rest of the day job.</sub>
+
+</details>
+
+<sub>Every screenshot is captured from the real extension running in Chrome, not
+mocked up, so they cannot drift from what the product actually does. Regenerate
+them with the tooling in the store-publishing workspace.</sub>
+
 <!-- media:end -->
 
 ## Why
