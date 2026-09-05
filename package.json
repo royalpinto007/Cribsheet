@@ -1,6 +1,6 @@
 {
   "name": "cribsheet",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Select a timestamp, a cron line, a token, a hash. Cribsheet tells you what it means, in the page, without sending it anywhere.",
   "scripts": {

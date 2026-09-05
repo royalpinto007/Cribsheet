@@ -5,6 +5,19 @@ All notable changes to this project are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [1.1.0] - 2026-09-06
+
+### Added
+
+- Redesigned popup: sticky blurred header with a result count, and an input
+  card with a focus ring, clear button, character count and live indicator.
+- Clickable example chips for timestamps, cron, colours, UUIDs, file modes and
+  HTTP statuses.
+- Top-pick highlight on the best reading, confidence pills, per-row copy
+  buttons with feedback, and richer empty states.
+
 ## [1.0.0] - 2026-08-08
 
 First release.

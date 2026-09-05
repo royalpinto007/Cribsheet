@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Cribsheet: Decode Selected Text",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Select a timestamp, cron line, token or hash and see what it means, right in the page. Nothing is sent anywhere, ever.",
   "permissions": ["activeTab", "contextMenus", "scripting"],
   "icons": {

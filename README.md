@@ -124,7 +124,8 @@ Select text, then either press **Alt+Shift+D** or right-click and choose
 else.
 
 The toolbar icon opens a scratchpad for when you have the string but not the
-page.
+page. It decodes as you type, with clickable examples, a result count, and a
+copy button on every row.
 
 ## Privacy
 
