@@ -9,23 +9,42 @@
   <body>
     <header class="bar">
       <div class="brand">
-        <img src="icons/icon-32.png" alt="" width="20" height="20" />
+        <span class="brand-icon"
+          ><img src="icons/icon-32.png" alt="" width="20" height="20"
+        /></span>
         <span>Cribsheet</span>
+        <span class="count" id="result-count" aria-live="polite"></span>
       </div>
-      <span class="hint"
-        >Select text on any page, then <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></span
-      >
+      <span class="hint">Select text, then <kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>D</kbd></span>
     </header>
 
-    <div class="tryit">
-      <label for="input">Or paste something here</label>
-      <textarea id="input" rows="2" spellcheck="false" placeholder="1700000000"></textarea>
+    <div class="composer">
+      <div class="input-card">
+        <label for="input">Paste something to decode</label>
+        <div class="textarea-wrap">
+          <textarea
+            id="input"
+            rows="2"
+            spellcheck="false"
+            placeholder="Try 1700000000, #5b3fd6, or a JWT…"
+          ></textarea>
+          <button id="clear-btn" class="clear-btn" aria-label="Clear input" hidden>×</button>
+        </div>
+        <div class="composer-foot">
+          <span class="char-count" id="char-count"></span>
+          <span class="live-dot" id="live-dot"
+            ><span aria-hidden="true"></span>decodes as you type</span
+          >
+        </div>
+      </div>
+      <div class="examples" id="examples" aria-label="Try an example"></div>
     </div>
 
     <main id="out" class="out" aria-live="polite"></main>
 
     <footer class="foot">
       <p>
+        <span aria-hidden="true">🔒</span>
         Cribsheet reads everything on your machine. It has no server, asks for no website access,
         and stores nothing at all, including what you type here.
       </p>
