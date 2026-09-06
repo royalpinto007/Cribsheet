@@ -12,13 +12,8 @@
     "format:check": "prettier --check ."
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@types/chrome": "^0.2.7",
-    "@types/node": "^26.4.1",
-=======
     "@types/chrome": "^0.2.8",
-    "@types/node": "^26.4.0",
->>>>>>> origin/main
+    "@types/node": "^26.4.1",
     "esbuild": "^0.28.2",
     "playwright": "^1.62.1",
     "prettier": "^3.4.2",
