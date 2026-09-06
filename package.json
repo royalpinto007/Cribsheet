@@ -12,12 +12,17 @@
     "format:check": "prettier --check ."
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@types/chrome": "^0.2.7",
     "@types/node": "^26.4.1",
+=======
+    "@types/chrome": "^0.2.8",
+    "@types/node": "^26.4.0",
+>>>>>>> origin/main
     "esbuild": "^0.28.2",
     "playwright": "^1.62.1",
     "prettier": "^3.4.2",
-    "tsx": "^4.23.12",
+    "tsx": "^4.23.13",
     "typescript": "^7.0.2"
   }
 }
